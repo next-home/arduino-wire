@@ -5,9 +5,7 @@
 
 #include <stdint.h>
 #include "Arduino.h"
-#include "fw/src/mgos_i2c.h"
-
-#if MGOS_ENABLE_I2C
+#include "mgos_i2c.h"
 
 class TwoWire {
  public:
@@ -64,7 +62,5 @@ class TwoWire {
 };
 
 extern TwoWire Wire;
-
-#endif /* MGOS_ENABLE_I2C */
 
 #endif /* CS_FW_SRC_ARDUINO_WIRE_H_ */

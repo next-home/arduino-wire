@@ -7,8 +7,6 @@
 
 #include "Wire.h"
 
-#if MGOS_ENABLE_I2C
-
 TwoWire Wire;
 
 TwoWire::TwoWire()
@@ -170,5 +168,3 @@ void TwoWire::onReceive(void (*function)(int)) {
 void TwoWire::onRequest(void (*function)(void)) {
   on_request_cb = function;
 }
-
-#endif /* MGOS_ENABLE_I2C */
