@@ -13,7 +13,7 @@ class TwoWire {
   ~TwoWire();
   void begin();
   void begin(uint8_t);
-  void begin(int);
+  void begin(uint8_t, uint8_t);
   void end();
   void setClock(uint32_t);
   void beginTransmission(uint8_t);
@@ -61,6 +61,6 @@ class TwoWire {
   void onReceiveService(uint8_t *, int);
 };
 
-extern TwoWire Wire;
+extern TwoWire Wire, Wire_2;
 
 #endif /* CS_FW_SRC_ARDUINO_WIRE_H_ */
