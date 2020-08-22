@@ -7,7 +7,7 @@
 
 #include "Wire.h"
 
-TwoWire Wire;
+TwoWire Wire, Wire_2;
 
 TwoWire::TwoWire()
     : i2c(nullptr),
@@ -23,8 +23,8 @@ TwoWire::TwoWire()
 TwoWire::~TwoWire() {
 }
 
-void TwoWire::begin(void) {
-  if (i2c == nullptr) i2c = mgos_i2c_get_global();
+void TwoWire::begin(uint8_t i2c_id) {
+  if (i2c == nullptr) i2c = mgos_i2c_get_bus(i2c_id);
   if (i2c == nullptr) return;
 
   mgos_i2c_stop(i2c);
@@ -34,13 +34,13 @@ void TwoWire::begin(void) {
   n_bytes_avail = n_bytes_to_send = 0;
 }
 
-void TwoWire::begin(uint8_t address) {
-  addr = address;
-  begin();
+void TwoWire::begin(void){
+    begin(0);
 }
 
-void TwoWire::begin(int address) {
-  begin((uint8_t) address);
+void TwoWire::begin(uint8_t address, uint8_t i2c_id){
+    addr = address;
+    begin(i2c_id);
 }
 
 void TwoWire::end(void) {
